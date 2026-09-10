@@ -1,0 +1,43 @@
+name: NQT Deals Assemble Media
+
+on:
+  push:
+    paths:
+      - 'nqtdeals/staging/**/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Assemble staged NQT Deals raster
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for ready in nqtdeals/staging/*/READY; do
+            dir="$(dirname "$ready")"
+            manifest="$dir/manifest.env"
+            test -f "$manifest"
+            # shellcheck disable=SC1090
+            source "$manifest"
+            test -n "${TARGET_PATH:-}"
+            test -n "${EXPECTED_SHA256:-}"
+            mkdir -p "$(dirname "$TARGET_PATH")"
+            cat "$dir"/part-* | tr -d '\n\r' | base64 --decode > "$TARGET_PATH"
+            actual="$(sha256sum "$TARGET_PATH" | awk '{print $1}')"
+            test "$actual" = "$EXPECTED_SHA256"
+            rm -rf "$dir"
+          done
+          git config user.name "nqtbot-media-worker"
+          git config user.email "nqtbot-media-worker@users.noreply.github.com"
+          git add nqtdeals
+          if ! git diff --cached --quiet; then
+            git commit -m "Assemble immutable NQT Deals raster [skip ci]"
+            git push
+          fi
