@@ -15,10 +15,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Rebuild and verify PNG
+      - name: Verify chunks and rebuild PNG
         shell: bash
         run: |
+          expected=(
+            9111cd85a5e87fcc4b44576ad80958100fa086b51f9b450888195d0ede6d7f5d
+            84d66aec5bf7433ff91d2cf3a4c44453eaf5a5e479a9679008b5dd606e2ce6e3
+            ff79e4005fa3d4cb10f7f401f8dae41fbd2d86549a3b69fbeefaadd102af3dfc
+            6017965eee2fc25410edee77ad3c436c9e0d1c0b29193daa8b55aa25e8e66355
+            c9f9d06c770f7021cf62710e2a4ae71ff677d6af4eef4a3cbe6f84568167f4ad
+            a2c05ffa83b0c309a27c6a18f9f3ebe0510f0c93f8ed935710dd092688e0e511
+            b3464d0f101fe81ee3df59890c54ba5c7f62e43bfadbd1ccb676682786cd708c
+            1446a149a537dd19eba8a37a8bec95e4e59c21baea99781f9b9e3e285603a681
+          )
+          for i in $(seq -w 1 8); do
+            f="nqtdeals/_incoming/NQTD-ED-0001-final-8.part${i}"
+            idx=$((10#$i - 1))
+            echo "part${i}: $(wc -c < "$f") bytes $(sha256sum "$f" | cut -d' ' -f1)"
+            test "$(sha256sum "$f" | cut -d' ' -f1)" = "${expected[$idx]}"
+          done
           cat nqtdeals/_incoming/NQTD-ED-0001-final-8.part* > /tmp/nqtd.b64
+          echo "base64: $(wc -c < /tmp/nqtd.b64) bytes $(sha256sum /tmp/nqtd.b64 | cut -d' ' -f1)"
+          test "$(wc -c < /tmp/nqtd.b64)" -eq 30900
+          test "$(sha256sum /tmp/nqtd.b64 | cut -d' ' -f1)" = "7f1c155f38597b3ee2f47f1790c3c6825554a863442e7e44790ecbc3469e3450"
           base64 -d /tmp/nqtd.b64 > nqtdeals/2026/09/NQTD-ED-0001-final-8.png
           test "$(wc -c < nqtdeals/2026/09/NQTD-ED-0001-final-8.png)" -eq 23175
           test "$(sha256sum nqtdeals/2026/09/NQTD-ED-0001-final-8.png | cut -d' ' -f1)" = "56409f95ae9330586d18ad52bb2cb1a52752fa02228824903486d5af7e955561"
