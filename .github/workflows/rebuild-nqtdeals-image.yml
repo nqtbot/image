@@ -28,7 +28,7 @@ jobs:
             b3464d0f101fe81ee3df59890c54ba5c7f62e43bfadbd1ccb676682786cd708c
             1446a149a537dd19eba8a37a8bec95e4e59c21baea99781f9b9e3e285603a681
           )
-          for i in $(seq -w 1 8); do
+          for i in $(seq -w 01 08); do
             f="nqtdeals/_incoming/NQTD-ED-0001-final-8.part${i}"
             idx=$((10#$i - 1))
             echo "part${i}: $(wc -c < "$f") bytes $(sha256sum "$f" | cut -d' ' -f1)"
