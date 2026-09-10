@@ -1,0 +1,34 @@
+name: Rebuild NQT Deals image
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rebuild-nqtdeals-image.yml'
+      - 'nqtdeals/_incoming/NQTD-ED-0001-final-8.part*'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild and verify PNG
+        shell: bash
+        run: |
+          cat nqtdeals/_incoming/NQTD-ED-0001-final-8.part* > /tmp/nqtd.b64
+          base64 -d /tmp/nqtd.b64 > nqtdeals/2026/09/NQTD-ED-0001-final-8.png
+          test "$(wc -c < nqtdeals/2026/09/NQTD-ED-0001-final-8.png)" -eq 23175
+          test "$(sha256sum nqtdeals/2026/09/NQTD-ED-0001-final-8.png | cut -d' ' -f1)" = "56409f95ae9330586d18ad52bb2cb1a52752fa02228824903486d5af7e955561"
+
+      - name: Commit rebuilt image
+        shell: bash
+        run: |
+          git config user.name "nqtbot"
+          git config user.email "nqtbot@users.noreply.github.com"
+          git add nqtdeals/2026/09/NQTD-ED-0001-final-8.png
+          git diff --cached --quiet && exit 0
+          git commit -m "Rebuild full NQT Deals publish image"
+          git push
