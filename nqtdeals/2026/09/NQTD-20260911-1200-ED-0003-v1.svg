@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<rect width="1080" height="1350" fill="#F7F4EC"/>
+<rect x="64" y="62" width="952" height="1226" rx="42" fill="#FFFFFF" stroke="#20252B" stroke-width="3"/>
+<rect x="64" y="62" width="952" height="188" rx="42" fill="#0B6670"/>
+<text x="112" y="132" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#F7F4EC">NQT DEALS · LUNCH DECISION</text>
+<text x="112" y="198" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" fill="#FFFFFF">3 CÂU HỎI TRƯỚC KHI</text>
+<text x="112" y="254" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" fill="#FFFFFF">BẤM “MUA NGAY”</text>
+
+<circle cx="168" cy="430" r="62" fill="#5B6F8C"/>
+<text x="168" y="451" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800" fill="#FFFFFF">1</text>
+<text x="270" y="405" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="800" fill="#20252B">NÓ GIẢI QUYẾT VẤN ĐỀ GÌ?</text>
+<text x="270" y="457" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">Nếu không có pain lặp lại, “món tiện ích”</text>
+<text x="270" y="497" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">rất dễ thành thêm một thứ phải dọn.</text>
+<line x1="116" y1="560" x2="964" y2="560" stroke="#D8D5CE" stroke-width="2"/>
+
+<circle cx="168" cy="700" r="62" fill="#C68A1D"/>
+<text x="168" y="721" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800" fill="#FFFFFF">2</text>
+<text x="270" y="676" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="800" fill="#20252B">NẾU KHÔNG GIẢM %, VẪN MUỐN MUA?</text>
+<text x="270" y="728" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">Badge sale là tín hiệu để kiểm tra —</text>
+<text x="270" y="768" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">không phải lý do tự động để xuống tiền.</text>
+<line x1="116" y1="830" x2="964" y2="830" stroke="#D8D5CE" stroke-width="2"/>
+
+<circle cx="168" cy="970" r="62" fill="#2E7D5B"/>
+<text x="168" y="991" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800" fill="#FFFFFF">3</text>
+<text x="270" y="946" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="800" fill="#20252B">CÓ LỰA CHỌN ĐƠN GIẢN HƠN KHÔNG?</text>
+<text x="270" y="998" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">So sánh theo công việc cần giải quyết,</text>
+<text x="270" y="1038" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#40464D">không theo số badge trên listing.</text>
+
+<rect x="112" y="1126" width="856" height="104" rx="26" fill="#F0EEE8"/>
+<text x="540" y="1170" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#0B6670">MUA THÔNG MINH = PROBLEM → EVIDENCE → DECISION</text>
+<text x="540" y="1212" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#555B61">Không cần sale lớn. Cần lý do mua đủ rõ.</text>
+</svg>
